@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <WinCascBuildNumberFile>$(MSBuildThisFileDirectory)build-number.txt</WinCascBuildNumberFile>
+    <WinCascBuildNumberOverridden Condition="'$(BuildNumber)' != ''">true</WinCascBuildNumberOverridden>
+    <BuildNumber Condition="'$(BuildNumber)' == '' and Exists('$(WinCascBuildNumberFile)')">$([System.IO.File]::ReadAllText('$(WinCascBuildNumberFile)').Trim())</BuildNumber>
+    <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
+    <BuildDate Condition="'$(BuildDate)' == ''">$([System.DateTime]::UtcNow.ToString("yyyy.M.d"))</BuildDate>
+
+    <Version>$(BuildDate).$(BuildNumber)</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <InformationalVersion>$(Version)</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+
+    <ApplicationIcon>$(MSBuildThisFileDirectory)..\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="src/WinCasc/WinCasc.csproj" />
+  <Project Path="src/WinCasc.Shell/WinCasc.Shell.csproj" />
+</Solution>

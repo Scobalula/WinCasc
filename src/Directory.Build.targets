@@ -1,0 +1,15 @@
+<Project>
+  <Target
+    Name="IncrementLocalBuildNumber"
+    AfterTargets="Build"
+    Condition="'$(DesignTimeBuild)' != 'true' And '$(WinCascBuildNumberOverridden)' != 'true' And '$(MSBuildProjectName)' == 'WinCasc.Shell'">
+    <PropertyGroup>
+      <WinCascNextBuildNumber>$([MSBuild]::Add($(BuildNumber), 1))</WinCascNextBuildNumber>
+    </PropertyGroup>
+
+    <WriteLinesToFile
+      File="$(WinCascBuildNumberFile)"
+      Lines="$(WinCascNextBuildNumber)"
+      Overwrite="true" />
+  </Target>
+</Project>
