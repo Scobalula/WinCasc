@@ -1,14 +1,10 @@
-name: Build
+name: Release
 
 on:
-  push:
-    branches: [main]
-    tags: ['v*']
-  pull_request:
   workflow_dispatch:
 
 jobs:
-  build:
+  release:
     runs-on: windows-2025
 
     permissions:
@@ -30,15 +26,10 @@ jobs:
         shell: pwsh
         run: .\installer\build.ps1 -BuildNumber ${{ github.run_number }} -InstallWinFsp
 
-      - uses: actions/upload-artifact@v7
-        with:
-          name: WinCasc-setup
-          path: artifacts/installer/*.exe
-          if-no-files-found: error
-
       - name: Publish release
-        if: startsWith(github.ref, 'refs/tags/v')
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create ${{ github.ref_name }} (Get-ChildItem artifacts/installer/*.exe).FullName --title ${{ github.ref_name }} --generate-notes
+        run: |
+          $version = (Get-Item artifacts/publish/WinCasc.exe).VersionInfo.FileVersion
+          gh release create "v$version" (Get-ChildItem artifacts/installer/*.exe).FullName --title "WinCasc $version" --target $env:GITHUB_SHA --generate-notes
