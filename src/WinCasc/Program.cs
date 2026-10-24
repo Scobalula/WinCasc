@@ -124,5 +124,9 @@ internal static class Program
         Console.WriteLine("  WinCasc unmount <mount point | --all>");
         Console.WriteLine("  WinCasc register");
         Console.WriteLine("  WinCasc unregister");
+        Console.WriteLine();
+        Console.WriteLine("WinCasc is licensed under GPLv3: https://github.com/Scobalula/WinCasc");
+        Console.WriteLine("Uses WinFsp - Windows File System Proxy, Copyright (C) Bill Zissimopoulos: https://github.com/winfsp/winfsp");
+        Console.WriteLine("Uses CascLib, Copyright (c) 2014 Ladislav Zezula: https://github.com/ladislav-zezula/CascLib");
     }
 }

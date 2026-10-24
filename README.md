@@ -27,12 +27,17 @@ WinCasc register | unregister
 Requires .NET 10 SDK, CMake, Visual Studio C++ tools, WinFsp and Inno Setup 6.
 
 ```
-git clone --recursive <repo>
+git clone --recursive https://github.com/Scobalula/WinCasc
 .\installer\build.ps1
 ```
 
 The installer ends up in `artifacts\installer`.
 
-## Credits
+## License
 
-[CascLib](https://github.com/ladislav-zezula/CascLib) and [WinFsp](https://github.com/winfsp/winfsp).
+WinCasc is licensed under GPLv3, see [LICENSE](LICENSE).
+
+- WinFsp - Windows File System Proxy, Copyright (C) Bill Zissimopoulos - https://github.com/winfsp/winfsp (GPLv3 with FLOSS exception)
+- CascLib, Copyright (c) 2014 Ladislav Zezula - https://github.com/ladislav-zezula/CascLib (MIT)
+
+Full texts in [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).
